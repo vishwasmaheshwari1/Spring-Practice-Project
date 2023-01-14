@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>School App</title>
+
+    <!--    <link href="/assets/css/style.css" rel="stylesheet"/>-->
+
+</head>
+<body>
+
+    <div th:replace="header">...</div>
+
+    <h1 th:text="'Hello ' + ${username} + '! Let\'s do party.'">Hello World!</h1>
+
+
+    <a th:href="@{/dashboard}" sec:authorize="isAuthenticated()">Dashboard</a>
+    <a th:href="@{/courses}" sec:authorize="isAnonymous()">Courses</a>
+    <a th:href="@{/about}" sec:authorize="isAnonymous()">About</a>
+    <a th:href="@{/contact}" sec:authorize="isAnonymous()">Contact</a>
+
+    <!--    queryparams get request-->
+    <a th:href="@{/holidays(festival='true',federal='false')}">Holidays (Query)</a>
+    <!--    pathparams get request-->
+    <a th:href="@{/holidays/all}">Holidays (Path)</a>
+
+<!--    <h1 th:text="'Hello ' + ${username} + '! My Friend.'">Hello World!</h1>-->
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+
+    <div th:replace="header">...</div>
+
+
+    <a th:href="@{/home}">Home</a>
+
+    <div th:each="error: ${#fields.errors('person.*')}" th:text="${error}">
+    </div>
+
+        <form th:action="@{/public/createUser}" method="post" th:object="${person}">
+
+
+            <!--    <form action="/saveMessage" method="post" th:object="${contact}">-->
+            <!--            <input type="text" name="name" id="name" required="true" placeholder="Your name"/>-->
+            <!--            <input type="text" name="mobile" id="mobile" placeholder="mobile number"/>-->
+
+            <input type="text" th:field="*{name}" required="true" placeholder="Your name"/>
+            <input type="text" th:field="*{mobileNumber}" placeholder="mobile number"/>
+            <input type="text" th:field="*{email}" placeholder="email"/>
+            <input type="text" th:field="*{confirmEmail}" placeholder="confirm email"/>
+            <input type="password" th:field="*{password}" placeholder="password"/>
+            <input type="password" th:field="*{confirmPassword}" placeholder="confirm password"/>
+            <button>Register</button>
+
+        </form>
+
+</body>
+</html>

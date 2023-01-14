@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Classes</title>
+</head>
+<body>
+<div th:replace="header">...</div>
+<h1>Classes Details</h1>
+
+<div style="height: 50px;">
+  <a th:href="@{/home}">Home</a>
+
+</div>
+
+
+<!--<div th:each="error: ${#fields.errors('schoolClass.*')}" th:text="${error}">-->
+<!--</div>-->
+  <form th:action="@{/admin/addNewClass}" method="post" th:object="${schoolClass}">
+
+
+    <input type="text" th:field="*{name}" required="true" placeholder="Class name"/>
+
+    <button>Add Class</button>
+
+  </form>
+
+  <div class="py-4">
+
+
+  <table>
+
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">Class ID</th>
+      <th scope="col">Class Name</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="schoolClass: ${schoolClasses}">
+      <td th:text="${schoolClass.classId}"></td>
+      <td th:text="${schoolClass.name}"></td>
+      <td><a th:href="@{/admin/displayStudents(classId=${schoolClass.classId})}" class="btn btn-success">VIEW</a></td>
+      <td><a th:href="@{/admin/deleteClass(id=${schoolClass.classId})}" class="btn btn-warning">DELETE</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+<div class="py-4">
+  <a th:href="@{/dashboard}">
+    <button class="btn btn-style btn-style-3 text-left">BACK</button>
+  </a>
+</div>
+
+
+</body>
+</html>

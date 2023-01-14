@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+</head>
+<body>
+
+
+<div th:replace="header">...</div>
+
+
+<a th:href="@{/home}">Home</a>
+
+
+<div class="">
+
+    <div class="">
+        <div class="">
+            <div class="">
+                <h3 class="">Open Contact Messages</h3>
+            </div>
+        </div>
+        <div class="py-4">
+                    <div>
+                        
+                        <table class="">
+                            <thead class="">
+                            <tr>
+                                <th scope="col"><a th:href="@{'/displayMessages/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a></th>
+                                <th scope="col"><a th:href="@{'/displayMessages/page/' + ${currentPage} + '?sortField=mobileNum&sortDir=' + ${reverseSortDir}}">Mobile Num</a></th>
+                                <th scope="col"> <a th:href="@{'/displayMessages/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">Email</a></th>
+                                <th scope="col"><a th:href="@{'/displayMessages/page/' + ${currentPage} + '?sortField=subject&sortDir=' + ${reverseSortDir}}">Subject</a></th>
+                                <th scope="col"><a th:href="@{'/displayMessages/page/' + ${currentPage} + '?sortField=message&sortDir=' + ${reverseSortDir}}">Message</a></th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="msg: ${contactMsgs}">
+                                <td th:text="${msg.name}"></td>
+                                <td th:text="${msg.mobile}"></td>
+                                <td th:text="${msg.email}"></td>
+                                <td th:text="${msg.subject}"></td>
+                                <td th:text="${msg.message}"></td>
+                                <td><a th:href="@{/closeMsg(id=${msg.contactId})}">CLOSE</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                    <div class="py-4">
+                        <div class="pagination-style text-center mt-5">
+                            <ul>
+                                <li>
+                                    <a th:if="${currentPage > 1}" th:href="@{'/displayMessages/page/' + ${currentPage - 1}+'?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
+                                        <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                                    </a>
+                                    <a th:unless="${currentPage > 1}" class="not-allowed" disabled="">
+                                        <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                <li>
+                                    <a th:if="${currentPage != i}" th:href="@{'/displayMessages/page/' + ${i}+'?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                                    <a class="active" th:unless="${currentPage != i}">[[${i}]]</a>
+                                </li>
+                                </span>
+                                <li>
+                                    <a th:if="${currentPage < totalPages}" th:href="@{'/displayMessages/page/' + ${currentPage + 1}+'?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">
+                                        <span class="fa fa-angle-double-right" aria-hidden="true"></span>
+                                    </a>
+                                    <a th:unless="${currentPage < totalPages}" class="not-allowed" disabled="">
+                                        <span class="fa fa-angle-double-right" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+
+
+<!--            Before Paging and Sorting-->
+
+<!--        <table class="">-->
+<!--            <thead class="">-->
+<!--            <tr>-->
+<!--                <th scope="col">Name</th>-->
+<!--                <th scope="col">Mobile Num</th>-->
+<!--                <th scope="col">Email</th>-->
+<!--                <th scope="col">Subject</th>-->
+<!--                <th scope="col">Message</th>-->
+<!--                <th scope="col"></th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="msg: ${contactMsgs}">-->
+<!--                <td th:text="${msg.name}"></td>-->
+<!--                <td th:text="${msg.mobile}"></td>-->
+<!--                <td th:text="${msg.email}"></td>-->
+<!--                <td th:text="${msg.subject}"></td>-->
+<!--                <td th:text="${msg.message}"></td>-->
+<!--                <td><a th:href="@{/closeMsg(id=${msg.contactId})}">CLOSE</a></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+        </div>
+    </div>
+    <div style="margin-top:30px;">
+        <a th:href="@{/dashboard}">
+            BACK
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

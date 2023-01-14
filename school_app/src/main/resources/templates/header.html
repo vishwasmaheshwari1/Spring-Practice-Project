@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <link href="/assets/css/style.css" rel="stylesheet"/>
+
+<!--    Note: while we're adding this header in different html pages. It will also add it's -->
+<!--    link url in it (inside body tag)-->
+
+</head>
+<body>
+
+
+<!--<h3>This is header of the century!</h3>-->
+<div><h3>This is header of the century!</h3></div>
+<a th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+<a th:href="@{/login}" sec:authorize="isAnonymous()">Login</a>
+</body>
+</html>

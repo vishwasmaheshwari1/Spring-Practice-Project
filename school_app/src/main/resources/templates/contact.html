@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+<!--    <link href="/assets/css/style.css" rel="stylesheet"/>-->
+
+</head>
+<body>
+    <div th:replace="header">...</div>
+    <h1>Contact Details</h1>
+
+    <div style="height: 50px;">
+        <a th:href="@{/home}">Home</a>
+
+    </div>
+
+
+    <div th:each="error: ${#fields.errors('contact.*')}" th:text="${error}">
+
+
+    </div>
+
+<!--    NOTE: thymleaf has good integration with spring, so it handles CSRF attacks-->
+<!--    and thus spring security allows you to submit form-->
+<!--    if we don't use thymleaf to submit form action than app will give 403 (forbidden) error-->
+
+    <form th:action="@{/saveMessage}" method="post" th:object="${contact}">
+
+
+<!--    <form action="/saveMessage" method="post" th:object="${contact}">-->
+<!--            <input type="text" name="name" id="name" required="true" placeholder="Your name"/>-->
+<!--            <input type="text" name="mobile" id="mobile" placeholder="mobile number"/>-->
+
+        <input type="text" th:field="*{name}" required="true" placeholder="Your name"/>
+        <input type="text" th:field="*{mobile}" placeholder="mobile number"/>
+            <button>Send Message</button>
+
+    </form>
+
+</body>
+</html>

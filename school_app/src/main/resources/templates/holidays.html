@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Holidays</title>
+<!--    <link href="/assets/css/style.css" rel="stylesheet"/>-->
+
+</head>
+<body>
+    <div th:replace="header">...</div>
+
+
+    <div th:each="holiday : ${FESTIVAL}" th:if="${festival} == true">
+
+        <div th:text="${holiday.reason}"></div>
+        <div th:text="${holiday.day}"></div>
+    </div>
+
+    <div th:each="holiday : ${FEDERAL}" th:if="${federal} == true">
+
+        <div th:text="${holiday.reason}"></div>
+        <div th:text="${holiday.day}"></div>
+    </div>
+
+    <a th:href="@{/home}">Home</a>
+
+</body>
+</html>

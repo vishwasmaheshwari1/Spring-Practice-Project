@@ -1,0 +1,42 @@
+a {
+    text-decoration: none;
+    padding: 10px 35px;
+    font-size: 27px;
+    background: BLACK;
+    border-radius: 10px;
+    color: white;
+}
+
+a:hover {
+
+    background: red;
+
+}
+
+
+form {
+    padding: 35px 0px;
+}
+
+input {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+button {
+    font-size: 16px;
+    font-family: cursive;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: transparent;
+}
+
+button:hover {
+    background: red;
+}
+
+.py-4 {
+    padding: 10px 0px;
+
+}
